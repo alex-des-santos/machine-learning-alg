@@ -4,7 +4,7 @@ Uma página web educativa e interativa que explica os algoritmos de machine lear
 
 ## 🚀 Demo Online
 
-Esta página pode ser visualizada diretamente no GitHub Pages: [Clique aqui para ver a demo](https://seuusername.github.io/machine-learning-alg)
+Esta página pode ser visualizada diretamente no GitHub Pages: [Clique aqui para ver a demo](https://alex-des-santos.github.io/machine-learning-alg)
 
 ## 📚 Algoritmos Incluídos
 

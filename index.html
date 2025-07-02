@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos de Machine Learning - Guia Interativo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>🤖 ML Algoritmos</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#algorithms">Algoritmos</a></li>
+                <li><a href="#comparison">Comparação</a></li>
+                <li><a href="#resources">Recursos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Aprenda Machine Learning de Forma Visual</h2>
+                <p>Explore os algoritmos mais populares de machine learning com explicações simples, exemplos práticos e visualizações interativas.</p>
+                <a href="#algorithms" class="cta-button">Explorar Algoritmos</a>
+            </div>
+        </section>
+
+        <section id="algorithms" class="algorithms-section">
+            <h2>Algoritmos Populares de Machine Learning</h2>
+            
+            <!-- Linear Regression -->
+            <div class="algorithm-card" id="linear-regression">
+                <div class="algorithm-header">
+                    <h3>📈 Regressão Linear</h3>
+                    <span class="algorithm-type">Supervisionado - Regressão</span>
+                </div>
+                <div class="algorithm-content">
+                    <div class="explanation">
+                        <h4>Como Funciona:</h4>
+                        <p>A regressão linear encontra a melhor linha reta que passa pelos pontos de dados. É como desenhar uma linha que melhor representa a relação entre duas variáveis.</p>
+                        
+                        <h4>Exemplo Prático:</h4>
+                        <p><strong>Predição de preços de casas:</strong> Com base no tamanho da casa (m²), prever o preço. Se casas maiores custam mais, a linha mostrará essa tendência.</p>
+                        
+                        <h4>Quando Usar:</h4>
+                        <ul>
+                            <li>Prever valores numéricos (preços, temperaturas, vendas)</li>
+                            <li>Quando há relação linear entre variáveis</li>
+                            <li>Interpretação simples dos resultados</li>
+                        </ul>
+                        
+                        <h4>⚠️ Limitações:</h4>
+                        <ul>
+                            <li>Assume relação linear (pode não funcionar com dados complexos)</li>
+                            <li>Sensível a outliers</li>
+                            <li>Pode sofrer overfitting com muitas features</li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <canvas id="linearRegressionChart" width="400" height="300"></canvas>
+                        <button onclick="generateLinearRegressionData()">Gerar Novos Dados</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logistic Regression -->
+            <div class="algorithm-card" id="logistic-regression">
+                <div class="algorithm-header">
+                    <h3>📊 Regressão Logística</h3>
+                    <span class="algorithm-type">Supervisionado - Classificação</span>
+                </div>
+                <div class="algorithm-content">
+                    <div class="explanation">
+                        <h4>Como Funciona:</h4>
+                        <p>Usa uma curva em S (sigmoide) para classificar dados em categorias. Em vez de prever valores exatos, prevê a probabilidade de pertencer a uma classe.</p>
+                        
+                        <h4>Exemplo Prático:</h4>
+                        <p><strong>Detecção de spam:</strong> Com base em palavras-chave, comprimento do email e remetente, determinar se um email é spam (sim/não).</p>
+                        
+                        <h4>Quando Usar:</h4>
+                        <ul>
+                            <li>Classificação binária (sim/não, aprovado/reprovado)</li>
+                            <li>Quando você quer probabilidades, não apenas classificação</li>
+                            <li>Interpretação dos fatores de influência</li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <canvas id="logisticRegressionChart" width="400" height="300"></canvas>
+                        <button onclick="generateLogisticRegressionData()">Gerar Novos Dados</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decision Tree -->
+            <div class="algorithm-card" id="decision-tree">
+                <div class="algorithm-header">
+                    <h3>🌳 Árvore de Decisão</h3>
+                    <span class="algorithm-type">Supervisionado - Classificação/Regressão</span>
+                </div>
+                <div class="algorithm-content">
+                    <div class="explanation">
+                        <h4>Como Funciona:</h4>
+                        <p>Cria uma série de perguntas de sim/não que levam a uma decisão final. Como um fluxograma que você segue para chegar a uma conclusão.</p>
+                        
+                        <h4>Exemplo Prático:</h4>
+                        <p><strong>Aprovação de empréstimo:</strong></p>
+                        <ul>
+                            <li>Salário > R$ 5.000? → Se SIM: aprovado</li>
+                            <li>Se NÃO: Tem fiador? → Se SIM: aprovado</li>
+                            <li>Se NÃO: Score > 700? → Se SIM: aprovado, Se NÃO: negado</li>
+                        </ul>
+                        
+                        <h4>Quando Usar:</h4>
+                        <ul>
+                            <li>Quando você precisa explicar as decisões</li>
+                            <li>Dados com categorias bem definidas</li>
+                            <li>Regras de negócio complexas</li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <div id="decisionTreeViz"></div>
+                        <button onclick="generateDecisionTree()">Gerar Nova Árvore</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- K-Means -->
+            <div class="algorithm-card" id="kmeans">
+                <div class="algorithm-header">
+                    <h3>🎯 K-Means</h3>
+                    <span class="algorithm-type">Não-supervisionado - Agrupamento</span>
+                </div>
+                <div class="algorithm-content">
+                    <div class="explanation">
+                        <h4>Como Funciona:</h4>
+                        <p>Agrupa dados similares em clusters. Imagina que você tem pontos espalhados e quer encontrar grupos naturais - o K-means encontra os centros desses grupos.</p>
+                        
+                        <h4>Exemplo Prático:</h4>
+                        <p><strong>Segmentação de clientes:</strong> Agrupar clientes por comportamento de compra:</p>
+                        <ul>
+                            <li>Grupo 1: Compram muito e caro (VIPs)</li>
+                            <li>Grupo 2: Compram pouco mas regularmente (Fiéis)</li>
+                            <li>Grupo 3: Compram ocasionalmente (Oportunistas)</li>
+                        </ul>
+                        
+                        <h4>Quando Usar:</h4>
+                        <ul>
+                            <li>Descobrir padrões ocultos nos dados</li>
+                            <li>Segmentação de mercado</li>
+                            <li>Redução de complexidade dos dados</li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <canvas id="kmeansChart" width="400" height="300"></canvas>
+                        <div class="controls">
+                            <label>Número de clusters: <input type="range" id="clustersSlider" min="2" max="6" value="3" onchange="updateKMeans()"></label>
+                            <button onclick="generateKMeansData()">Gerar Novos Dados</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Neural Network -->
+            <div class="algorithm-card" id="neural-network">
+                <div class="algorithm-header">
+                    <h3>🧠 Rede Neural</h3>
+                    <span class="algorithm-type">Supervisionado - Classificação/Regressão</span>
+                </div>
+                <div class="algorithm-content">
+                    <div class="explanation">
+                        <h4>Como Funciona:</h4>
+                        <p>Imita o funcionamento do cérebro humano com neurônios artificiais conectados. Cada neurônio recebe informações, processa e passa para o próximo, aprendendo padrões complexos.</p>
+                        
+                        <h4>Exemplo Prático:</h4>
+                        <p><strong>Reconhecimento de imagens:</strong></p>
+                        <ul>
+                            <li>Entrada: pixels da imagem</li>
+                            <li>Camadas ocultas: detectam bordas, formas, texturas</li>
+                            <li>Saída: "É um gato" ou "É um cachorro"</li>
+                        </ul>
+                        
+                        <h4>Quando Usar:</h4>
+                        <ul>
+                            <li>Problemas complexos com muitos dados</li>
+                            <li>Reconhecimento de padrões em imagens, texto, áudio</li>
+                            <li>Quando outros algoritmos não funcionam bem</li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <div id="neuralNetworkViz"></div>
+                        <button onclick="animateNeuralNetwork()">Animar Propagação</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Random Forest -->
+            <div class="algorithm-card" id="random-forest">
+                <div class="algorithm-header">
+                    <h3>🌲 Random Forest</h3>
+                    <span class="algorithm-type">Supervisionado - Classificação/Regressão</span>
+                </div>
+                <div class="algorithm-content">
+                    <div class="explanation">
+                        <h4>Como Funciona:</h4>
+                        <p>Combina muitas árvores de decisão diferentes. É como perguntar a opinião de vários especialistas e usar a resposta mais comum. Cada árvore "vota" e a maioria ganha.</p>
+                        
+                        <h4>Exemplo Prático:</h4>
+                        <p><strong>Diagnóstico médico:</strong></p>
+                        <ul>
+                            <li>100 árvores analisam sintomas do paciente</li>
+                            <li>70 árvores dizem "gripe", 30 dizem "resfriado"</li>
+                            <li>Resultado final: "gripe" (pela maioria)</li>
+                        </ul>
+                        
+                        <h4>Quando Usar:</h4>
+                        <ul>
+                            <li>Quando você quer alta precisão</li>
+                            <li>Dados com muito ruído</li>
+                            <li>Problemas complexos de classificação</li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <div id="randomForestViz"></div>
+                        <button onclick="generateRandomForest()">Gerar Nova Floresta</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gradient Boosting -->
+            <div class="algorithm-card" id="gradient-boosting">
+                <div class="algorithm-header">
+                    <h3>📈 Gradient Boosting</h3>
+                    <span class="algorithm-type">Supervisionado - Classificação/Regressão</span>
+                </div>
+                <div class="algorithm-content">
+                    <div class="explanation">
+                        <h4>Como Funciona:</h4>
+                        <p>Constrói modelos sequencialmente, onde cada novo modelo aprende com os erros do anterior. É como um estudante que vai melhorando as notas corrigindo seus erros anteriores.</p>
+                        
+                        <h4>Exemplo Prático:</h4>
+                        <p><strong>Previsão de vendas:</strong></p>
+                        <ul>
+                            <li>Modelo 1: Prevê 1000 vendas, real = 1200 (erro +200)</li>
+                            <li>Modelo 2: Aprende a corrigir +200, melhora previsão</li>
+                            <li>Modelo 3: Corrige erros restantes, previsão mais precisa</li>
+                        </ul>
+                        
+                        <h4>Quando Usar:</h4>
+                        <ul>
+                            <li>Quando você precisa da maior precisão possível</li>
+                            <li>Competições de machine learning</li>
+                            <li>Problemas onde pequenas melhorias importam</li>
+                        </ul>
+                        
+                        <h4>⚠️ Limitações:</h4>
+                        <ul>
+                            <li>Pode sofrer overfitting facilmente</li>
+                            <li>Mais lento para treinar que Random Forest</li>
+                            <li>Sensível a hiperparâmetros</li>
+                        </ul>
+                    </div>
+                    <div class="visualization">
+                        <div id="gradientBoostingViz"></div>
+                        <button onclick="generateGradientBoosting()">Treinar Novo Modelo</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="comparison-section">
+            <h2>Comparação de Algoritmos</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Algoritmo</th>
+                            <th>Tipo</th>
+                            <th>Facilidade de Interpretação</th>
+                            <th>Velocidade</th>
+                            <th>Precisão</th>
+                            <th>Melhor Para</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Regressão Linear</td>
+                            <td>Supervisionado</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                            <td>Relações lineares simples</td>
+                        </tr>
+                        <tr>
+                            <td>Regressão Logística</td>
+                            <td>Supervisionado</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                            <td>Classificação binária</td>
+                        </tr>
+                        <tr>
+                            <td>Árvore de Decisão</td>
+                            <td>Supervisionado</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                            <td>Regras de negócio claras</td>
+                        </tr>
+                        <tr>
+                            <td>K-Means</td>
+                            <td>Não-supervisionado</td>
+                            <td>⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                            <td>Segmentação e agrupamento</td>
+                        </tr>
+                        <tr>
+                            <td>Rede Neural</td>
+                            <td>Supervisionado</td>
+                            <td>⭐</td>
+                            <td>⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>Problemas complexos</td>
+                        </tr>
+                        <tr>
+                            <td>Random Forest</td>
+                            <td>Supervisionado</td>
+                            <td>⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>Alta precisão geral</td>
+                        </tr>
+                        <tr>
+                            <td>Gradient Boosting</td>
+                            <td>Supervisionado</td>
+                            <td>⭐⭐</td>
+                            <td>⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>Máxima precisão, competições</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="resources" class="resources-section">
+            <h2>Recursos Adicionais</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>📚 Para Estudar Mais</h3>
+                    <ul>
+                        <li><a href="https://scikit-learn.org/" target="_blank">Scikit-learn (Python)</a></li>
+                        <li><a href="https://www.kaggle.com/learn" target="_blank">Kaggle Learn</a></li>
+                        <li><a href="https://www.coursera.org/learn/machine-learning" target="_blank">Curso ML - Coursera</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3>🛠️ Ferramentas Práticas</h3>
+                    <ul>
+                        <li><a href="https://teachablemachine.withgoogle.com/" target="_blank">Teachable Machine</a></li>
+                        <li><a href="https://playground.tensorflow.org/" target="_blank">TensorFlow Playground</a></li>
+                        <li><a href="https://www.kaggle.com/" target="_blank">Kaggle Competitions</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3>📊 Datasets para Praticar</h3>
+                    <ul>
+                        <li><a href="https://archive.ics.uci.edu/ml/" target="_blank">UCI ML Repository</a></li>
+                        <li><a href="https://www.kaggle.com/datasets" target="_blank">Kaggle Datasets</a></li>
+                        <li><a href="https://datasetsearch.research.google.com/" target="_blank">Google Dataset Search</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ML Algoritmos - Aprendendo Machine Learning de forma visual e prática</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
